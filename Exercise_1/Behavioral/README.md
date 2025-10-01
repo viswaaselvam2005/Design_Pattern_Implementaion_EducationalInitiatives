@@ -80,4 +80,4 @@ Loose Coupling: Patterns promote loose coupling between objects
 Responsibility Distribution: Clear assignment of responsibilities
 Runtime Flexibility: Many patterns support runtime behavior changes
 Choose Wisely: Use the simplest pattern that solves your problem
-Behavioral Pattern Relationships:
+
