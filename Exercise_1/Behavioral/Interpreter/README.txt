@@ -1,134 +1,130 @@
-Pattern Name:
-Interpreter Pattern Category:
+# Interpreter Pattern
 
-Description:
-- The Interpreter pattern provides a way to evaluate language grammar or expressions.
-- It defines a representation for grammar along with an interpreter that uses the representation to interpret sentences.
- - Think of it like a calculator that can understand and evaluate mathematical expressions.
- - It's useful when you need to interpret a simple language or grammar.
+**Pattern Category:** Behavioral Design Pattern
 
-The key idea is: - "Define a grammar representation and provide an interpreter to evaluate expressions in that grammar."
+---
 
-The Problem:
-- You need to interpret expressions in a simple language.
-- You want to represent grammar rules as objects.
-- You need to evaluate expressions without hardcoding the logic.
-- You want to extend the language with new grammar rules.
-- You need to parse and interpret structured data.
+## Description
 
-The Solution:
- - Create an abstract syntax tree (AST) representing the grammar.
- - Define an Expression interface with an interpret() method.
- - Create terminal expressions for basic elements.
- - Create non-terminal expressions for operations.
- - Use a parser to build the AST from input strings.
+- The Interpreter pattern provides a way to **evaluate language grammar or expressions**.  
+- It defines a representation for grammar along with an **interpreter** that uses the representation to interpret sentences.  
+- Think of it like a **calculator** that can understand and evaluate mathematical expressions.  
+- Useful when you need to interpret a **simple language or grammar**.  
 
-Code Flow Explanation – Boolean Expression Interpreter
+**Key Idea:**  
+> "Define a grammar representation and provide an interpreter to evaluate expressions in that grammar."
 
-What This Example Does:
-This example demonstrates a simple boolean expression interpreter that can parse and evaluate expressions like "true AND false", "true OR false", and "NOT true"
-using an abstract syntax tree (AST) of expressions.
+---
 
-Step-by-Step Code Flow:
+## The Problem
 
-Expression Interface (Expression.java):
-Purpose: Defines the contract for all expressions
-Method: interpret() returns the evaluated boolean result
-Represents: The abstract expression
+- Need to interpret **expressions in a simple language**.  
+- Want to represent **grammar rules as objects**.  
+- Need to evaluate expressions without **hardcoding the logic**.  
+- Want to **extend the language** with new grammar rules.  
+- Need to **parse and interpret structured data**.
 
-TerminalExpression Class (TerminalExpression.java):
-Purpose: Terminal expression representing boolean literals (true or false) or named constants (Robert, Julie)
-Behavior: interpret() returns the stored boolean value or checks the context string
-Represents: Leaf nodes in the expression tree
+---
 
-AndExpression Class (AndExpression.java):
-Purpose: Non-terminal expression for logical AND
-Behavior: interpret() returns expr1 AND expr2
-Represents: Internal nodes in the AST
+## The Solution
 
-OrExpression Class (OrExpression.java):
-Purpose: Non-terminal expression for logical OR
-Behavior: interpret() returns expr1 OR expr2
-Represents: Internal nodes in the AST
+- Create an **abstract syntax tree (AST)** representing the grammar.  
+- Define an **Expression interface** with an `interpret()` method.  
+- Create **terminal expressions** for basic elements.  
+- Create **non-terminal expressions** for operations.  
+- Use a **parser** to build the AST from input strings.
 
-NotExpression Class (NotExpression.java):
-Purpose: Non-terminal expression for logical NOT
-Behavior: interpret() returns NOT expr
-Represents: Internal nodes in the AST
+---
 
-InterpreterApplication Class (InterpreterApplication.java):
-Purpose: Builds the expression tree (AST) for different rules
-Behavior: Combines terminal and non-terminal expressions and evaluates them against a context string
-Represents: The client that parses and evaluates boolean expressions
+## Code Flow Explanation – Boolean Expression Interpreter
 
-Real-World Example: Mathematical Expression Calculator
+**What This Example Does:**  
 
--Imagine you're building a calculator application that:
--Supports mathematical expressions
--Can parse different notation formats
--Allows users to define custom operations
--Needs to evaluate expressions efficiently
--Should be extensible for new operations
+- Demonstrates a simple **boolean expression interpreter** that can parse and evaluate expressions like `"true AND false"`, `"true OR false"`, and `"NOT true"` using an AST of expressions.
 
-Without Interpreter Pattern: You'd need complex parsing logic, hardcoded evaluation rules, and difficulty adding new operations!
+**Step-by-Step Code Flow:**
 
-With Interpreter Pattern: You can easily add new operations, parse different formats, and maintain clean separation of concerns!
+- **Expression Interface (`Expression.java`)**  
+  - Defines the contract for all expressions  
+  - `interpret()` returns the evaluated boolean result  
+  - Represents the abstract expression  
 
-Benefits:
+- **TerminalExpression Class (`TerminalExpression.java`)**  
+  - Represents boolean literals (`true` or `false`) or named constants  
+  - `interpret()` returns the stored boolean value or checks the context string  
+  - Leaf nodes in the expression tree  
 
--Extensibility: Easy to add new grammar rules
--Maintainability: Grammar rules are represented as objects
--Separation of Concerns: Parsing and evaluation are separate
--Reusability: Expression objects can be reused
--Flexibility: Can support different input formats
+- **AndExpression Class (`AndExpression.java`)**  
+  - Non-terminal expression for logical AND  
+  - `interpret()` returns `expr1 AND expr2`  
+  - Internal nodes in the AST  
 
-Use Cases:
+- **OrExpression Class (`OrExpression.java`)**  
+  - Non-terminal expression for logical OR  
+  - `interpret()` returns `expr1 OR expr2`  
+  - Internal nodes in the AST  
 
--Mathematical Expressions: Evaluating mathematical formulas
--Query Languages: Interpreting database queries
--Configuration Files: Parsing configuration syntax
--Domain-Specific Languages: Interpreting custom languages
--Rule Engines: Evaluating business rules
+- **NotExpression Class (`NotExpression.java`)**  
+  - Non-terminal expression for logical NOT  
+  - `interpret()` returns `NOT expr`  
+  - Internal nodes in the AST  
 
-Drawbacks:
+- **InterpreterApplication Class (`InterpreterApplication.java`)**  
+  - Builds the expression tree (AST) for different rules  
+  - Combines terminal and non-terminal expressions and evaluates them against a context string  
+  - Client that parses and evaluates boolean expressions
 
--Complexity: Can become complex for large grammars
--Performance: May be slower than direct evaluation
--Learning Curve: Understanding AST structure
--Memory Usage: Creates many objects for complex expressions
+---
 
-How to Execute the Code:
-Navigate to the interpreter folder in terminal: cd behavioural/Interpreter
-Compile all Java files: javac *.java
-Run the main program: java InterpreterApplication
+## Real-World Example: Mathematical Expression Calculator
 
-Expected-Output:
+Imagine building a calculator application that:  
 
-John is male? true
-Julie is a married woman? true
-Robert is NOT married? true
-Julie is NOT married? false
+- Supports mathematical expressions  
+- Can parse different notation formats  
+- Allows users to define custom operations  
+- Needs to evaluate expressions efficiently  
+- Should be extensible for new operations  
 
-Key Takeaways:
+**Without Interpreter Pattern:**  
+- Complex parsing logic, hardcoded evaluation rules, and difficulty adding new operations  
 
--Grammar Representation: Grammar rules are represented as objects
--AST Structure: Expressions form a tree structure
--Terminal vs Non-terminal: Different types of expressions
--Parser Role: Parser builds the expression tree
--Interpretation: Each expression knows how to evaluate itself
+**With Interpreter Pattern:**  
+- Easily add new operations, parse different formats, and maintain clean separation of concerns  
 
-Interpreter Pattern Structure:
+---
 
--Expression Interface: Defines interpret() method
--Terminal Expressions: Represent basic elements
--Non-terminal Expressions: Represent operations
--Context: Contains global information
--Parser: Builds the expression tree
+## Benefits
 
-Simple Analogy: Think of it like a language translator:
+- **Extensibility:** Easy to add new grammar rules  
+- **Maintainability:** Grammar rules are represented as objects  
+- **Separation of Concerns:** Parsing and evaluation are separate  
+- **Reusability:** Expression objects can be reused  
+- **Flexibility:** Can support different input formats  
 
--Grammar Rules = Expression classes (how to understand the language)
--Sentences = Input strings to interpret
--Translation = interpret() method that evaluates expressions
--Dictionary = Parser that understands the structure
--Result = Understanding and evaluation of the input
+---
+
+## Use Cases
+
+- **Mathematical Expressions:** Evaluating formulas  
+- **Query Languages:** Interpreting database queries  
+- **Configuration Files:** Parsing configuration syntax  
+- **Domain-Specific Languages:** Interpreting custom languages  
+- **Rule Engines:** Evaluating business rules  
+
+---
+
+## Drawbacks
+
+- **Complexity:** Can become complex for large grammars  
+- **Performance:** May be slower than direct evaluation  
+- **Learning Curve:** Understanding AST structure  
+- **Memory Usage:** Creates many objects for complex expressions  
+
+---
+
+## How to Execute the Code
+
+1. Navigate to the interpreter folder in terminal:  
+   ```bash
+   cd behavioural/Interpreter
