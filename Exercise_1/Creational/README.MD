@@ -1,4 +1,4 @@
-reational Design Patterns in Java
+Creational Design Patterns in Java
 
 This project demonstrates the five core Creational Design Patterns using practical, beginner-friendly Java examples.
 
