@@ -1,38 +1,39 @@
-# Structural Design Patterns
+# Creational Design Patterns
 
-**Pattern Category:** Overview
+**Pattern Category:** Object Creation
 
 ---
 
 ## Description
 
-- Structural design patterns deal with **object composition** and **relationships between entities**.  
-- They help you **organize code into larger structures** while keeping it **flexible and efficient**.  
-- Focuses on how **classes and objects are composed** to form larger structures.  
-- Provides ways to **compose objects and classes** while maintaining flexibility and efficiency.  
+- **Creational design patterns** focus on **how objects are created** in a flexible, reusable, and controlled manner.  
+- Instead of creating objects directly using `new`, these patterns **encapsulate the creation logic**.  
+- This improves flexibility, **reduces tight coupling**, and **makes systems easier to scale**.  
+- These patterns define the **“when” and “how”** of object creation rather than letting the client control it.
 
 **Key Idea:**  
-> "Organize code into larger structures while keeping it flexible and efficient through object composition."
+> "Encapsulate object creation to make your code more flexible, maintainable, and scalable."
 
 ---
 
 ## The Problem
 
-- Need to organize code into **larger, more complex structures**.  
-- Want to manage **relationships between objects and classes**.  
-- Need to compose objects in ways that are **flexible and maintainable**.  
-- Want to avoid **tight coupling** between components.  
-- Need to create **flexible architectures** that can evolve over time.
+- Direct object creation leads to:
+  - **Tight coupling** between classes and their dependencies.  
+  - Difficulty changing object creation logic later.  
+  - Poor scalability and maintainability.  
+  - Repetition of creation logic in multiple places.  
+  - Harder testing and configuration.
 
 ---
 
 ## The Solution
 
-- Use **composition over inheritance** to build flexible structures.  
-- Create **interfaces** that define **contracts** between components.  
-- **Separate concerns** and responsibilities clearly.  
-- Build systems that can be **extended without modification**.  
-- Use patterns that promote **loose coupling** and **high cohesion**.
+- Use **specialized patterns** to manage how objects are created.  
+- Abstract the object creation logic from the client.  
+- Make systems more flexible to change.  
+- Promote **loose coupling** between components.  
+- Make it easier to switch implementations, add new products, or configure objects dynamically.
 
 ---
 
@@ -40,78 +41,79 @@
 
 **What This Overview Does:**  
 
-- Provides a comprehensive guide to all structural design patterns.  
-- Explains their purposes, relationships, and when to use each one.  
-- Serves as a roadmap for understanding and implementing structural patterns effectively.
+- Provides a structured guide to all major creational patterns.  
+- Explains their purposes, scenarios, and when to use each one.  
+- Serves as a **roadmap for implementing creational design patterns** effectively.  
+- Helps create flexible architectures where object creation logic is centralized and well-organized.
 
 ---
 
 ## Step-by-Step Pattern Guide
 
-### 1. Adapter Pattern (`adapter/`)
-- **Purpose:** Makes incompatible interfaces work together  
-- **Key Idea:** Acts as a bridge between two incompatible interfaces  
-- **Use Case:** When you need existing classes to work with others without modification  
+### 1. Singleton Pattern (`singleton/`)
+- **Purpose:** Ensures only one instance of a class exists and provides a global point of access.  
+- **Key Idea:** Restrict instantiation and control access to the single object.  
+- **Use Case:** Configuration managers, logging, caches, thread pools, connection pools.  
 
-### 2. Facade Pattern (`facade/`)
-- **Purpose:** Provides a simplified interface to a complex subsystem  
-- **Key Idea:** Hides complexity behind a simple interface  
-- **Use Case:** When you want to provide a simple interface to a complex system  
+### 2. Factory Method Pattern (`factory-method/`)
+- **Purpose:** Define an interface for creating objects, but let subclasses decide which class to instantiate.  
+- **Key Idea:** Delegates object creation to subclasses.  
+- **Use Case:** When a class cannot anticipate the type of objects it must create.
 
 ---
 
-## Real-World Example: Software Architecture Design
+## Real-World Example: Configuration Management
 
-Imagine building a large software system that:  
+Imagine building a large system that:
 
-- Has multiple components that need to work together  
-- Requires flexible relationships between objects  
-- Needs to be maintainable and extensible  
-- Should avoid tight coupling between parts  
-- Must support different implementations and configurations  
+- Has multiple objects that need controlled creation.  
+- Requires single points of access for certain components.  
+- Needs to manage families of related objects consistently.  
+- Needs flexible ways to construct complex objects.  
 
-**Without Structural Patterns:**  
-- Tightly coupled components, rigid architectures, and difficulty adding new features  
+**Without Creational Patterns:**  
+- Repetitive code, tight coupling, and rigid architecture.  
 
-**With Structural Patterns:**  
-- Flexible, maintainable systems with **clear interfaces**, **loose coupling**, and **easy extensibility**
+**With Creational Patterns:**  
+- Flexible, maintainable, and scalable system.  
+- Centralized object creation logic, easier testing, and clear object relationships.
 
 ---
 
 ## Benefits
 
-- **Flexibility:** Easy to modify and extend without breaking existing code  
-- **Maintainability:** Clear structure makes code easier to understand and maintain  
-- **Reusability:** Components can be reused in different contexts  
-- **Testability:** Loose coupling makes testing individual components easier  
-- **Scalability:** Systems can grow and evolve without major refactoring  
+- **Flexibility:** Object creation logic can change without affecting client code.  
+- **Maintainability:** Centralized and organized creation logic.  
+- **Reusability:** Patterns allow reusing creation mechanisms.  
+- **Testability:** Easier to mock or replace objects in tests.  
+- **Scalability:** Adding new product types or changing creation logic is easier.
 
 ---
 
 ## Use Cases
 
-- **Large Software Systems:** Building maintainable architectures  
-- **Framework Development:** Creating extensible frameworks  
-- **Legacy System Integration:** Making old systems work with new ones  
-- **Performance Optimization:** Managing memory and resource usage  
-- **Interface Design:** Creating clean, usable APIs  
+- **Large Software Systems:** Maintainable object creation.  
+- **Framework Development:** Configurable and extensible APIs.  
+- **Game Development:** Creating many similar objects with minor variations.  
+- **Database Connection Management:** Singleton connection pools.  
+- **Complex Object Construction:** Builders for objects with multiple optional parameters.
 
 ---
 
 ## Drawbacks
 
-- **Complexity:** Can add complexity if overused  
-- **Learning Curve:** Requires understanding of pattern relationships  
-- **Over-Engineering:** May be overkill for simple problems  
-- **Performance:** Some patterns add overhead  
-- **Debugging:** Can make debugging more complex  
+- **Complexity:** May add extra layers of abstraction.  
+- **Learning Curve:** Requires understanding multiple patterns and when to use them.  
+- **Over-Engineering:** Can be overkill for simple object creation.  
+- **Performance:** Some patterns introduce slight overhead.  
+- **Debugging:** Indirection in creation logic may complicate debugging.
 
 ---
 
 ## Key Takeaways
 
-- **Composition Over Inheritance:** Prefer object composition over class inheritance  
-- **Interface Design:** Design clean, focused interfaces between components  
-- **Loose Coupling:** Minimize dependencies between components  
-- **Single Responsibility:** Each pattern has a clear, focused purpose  
-- **Choose Wisely:** Use the simplest pattern that solves your problem
+- **Encapsulation of Creation Logic:** Avoid scattering object creation throughout code.  
+- **Loose Coupling:** Clients depend on interfaces, not concrete classes.  
+- **Single Responsibility:** Each pattern has a clear purpose in object creation.  
+- **Choose Wisely:** Use the simplest pattern that solves your problem.  
+- **Flexibility and Reuse:** Patterns make systems easier to extend and maintain.
