@@ -64,7 +64,6 @@ public class ScheduleManager {
         ));
     }
 
-    // ✅ Remove by ID instead of description
     public synchronized void removeTask(int taskId) throws TaskNotFoundException {
         Optional<Task> toRemove = tasks.stream()
                 .filter(t -> t.getId() == taskId)
@@ -73,7 +72,7 @@ public class ScheduleManager {
         if (toRemove.isPresent()) {
             Task removed = toRemove.get();
             tasks.remove(removed);
-            removedTasks.add(removed);  // ✅ keep record
+            removedTasks.add(removed);  
 
             notifyObservers(new TaskEvent(
                     TaskEventType.REMOVED,
@@ -96,7 +95,6 @@ public class ScheduleManager {
                 .collect(Collectors.toList());
     }
 
-    // ✅ Changed to ID-based completion
     public synchronized void markTaskComplete(int taskId) throws TaskNotFoundException {
         Optional<Task> toMark = tasks.stream()
                 .filter(t -> t.getId() == taskId)
@@ -114,7 +112,6 @@ public class ScheduleManager {
         }
     }
 
-    // ✅ NEW FEATURE: Summary
     public synchronized String getSummary() {
         int total = tasks.size();
         long completed = tasks.stream().filter(t -> t.getStatus() == Status.COMPLETED).count();
@@ -142,7 +139,7 @@ public class ScheduleManager {
     public synchronized List<Task> getRemovedTasks() {
         return new ArrayList<>(removedTasks);
     }
-    // ✅ Add this method to ScheduleManager.java
+    
     public synchronized List<Task> getTasksNearCurrentTime(int minutesThreshold) {
         LocalTime now = LocalTime.now();
         return tasks.stream()
