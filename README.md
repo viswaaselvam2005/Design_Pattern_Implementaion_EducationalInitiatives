@@ -1,5 +1,5 @@
 
-# Design Patterns Implementation – Educational Initiatives
+# Design Patterns Implementation 
 
 This repository contains implementations of various **design patterns** in Java, focusing on **Creational, Structural, and Behavioral patterns**.  
 
